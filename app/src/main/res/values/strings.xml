@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Meet Eat Save</string>
+    <string name="textViewTitle">Herzlich Wilkommen</string>
+    <string name="Red" />
+    <string name="Yellow" />
 </resources>
