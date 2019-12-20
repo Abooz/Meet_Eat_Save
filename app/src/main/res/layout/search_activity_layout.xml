@@ -9,27 +9,52 @@
         android:layout_height="56dp"
         android:background="@color/colorPrimary"/>
 
-    <EditText
-        android:id="@+id/search_location_text"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="50dp"
-        android:hint="city,plz.."
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:drawableEnd="@drawable/ic_my_location_black_24dp"
-        />
 
     <Button
+        android:id="@+id/search"
         android:layout_width="200dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/search_location_text"
-        android:layout_marginTop="40dp"
-        android:text="Search"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/roundcorner_background"
+        android:text="Search"
         android:textColor="@color/primaryTextColor"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:id="@+id/autoComplete"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:hint="City">
+
+        <AutoCompleteTextView
+            android:id="@+id/filled_exposed_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="124dp"
+        android:fontFamily="@font/audiowide"
+        android:text="Please choose your city first"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textColor="@android:color/black"/>
+
 
 </RelativeLayout>

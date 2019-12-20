@@ -1,16 +1,26 @@
 package com.example.meeteatsave;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
-public class SearchActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class SearchActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.search_activity_layout);
 
 
+
+        String[] COUNTRIES = new String[] {"München", "Freising", "Berlin", "Köln", "Frankfurt am Main", "Bonn", "Hamburg", "Bremen"};
+
+        ArrayAdapter<String> ad = new ArrayAdapter<>(getApplicationContext(), R.layout.dropdown_menu_popup_item, COUNTRIES);
+
+        AutoCompleteTextView editTextFilledExposedDropdown = findViewById(R.id.filled_exposed_dropdown);
+        editTextFilledExposedDropdown.setAdapter(ad);
     }
 }
