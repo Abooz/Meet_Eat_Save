@@ -1,6 +1,5 @@
 package com.example.meeteatsave;
 
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (t.onOptionsItemSelected(item))
             return true;
+
 
         return super.onOptionsItemSelected(item);
     }
