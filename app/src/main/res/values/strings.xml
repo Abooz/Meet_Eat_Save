@@ -3,4 +3,19 @@
     <string name="textViewTitle">Herzlich Wilkommen</string>
     <string name="Red" />
     <string name="Yellow" />
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+
+    <string-array name="Cities">
+        <item>München</item>
+        <item>Freising</item>
+        <item>Berlin</item>
+        <item>Köln</item>
+        <item>Frankfurt am Main</item>
+        <item>Bonn</item>
+        <item>Hamburg</item>
+        <item>Bremen</item>
+    </string-array>
+
 </resources>

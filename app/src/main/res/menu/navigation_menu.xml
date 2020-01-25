@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search"/>
+    <item android:id="@+id/Offers"
+        android:icon="@drawable/ic_room_service_black_24dp"
+        android:title="My Offers"/>
+    <item android:id="@+id/makeOffer"
+        android:icon="@drawable/ic_add_box_black_24dp"
+        android:title="Make an offer"/>
+    <item android:id="@+id/help"
+        android:icon="@drawable/ic_live_help_black_24dp"
+        android:title="Help"/>
+    <item
+        android:title=""
+        android:enabled="false" />
+    <item
+        android:title=""
+        android:enabled="false" />
+    <item android:id="@+id/logout"
+        android:title="My Account">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/account"
+                    android:icon="@drawable/ic_person_black_24dp"
+                    android:title="Profile"/>
+                <item
+                    android:icon="@drawable/ic_exit_to_app_black_24dp"
+                    android:title="Logout" />
+
+            </group>
+        </menu>
+    </item>
+
+
+
+
+
+
+
+</menu>

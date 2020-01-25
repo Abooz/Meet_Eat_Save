@@ -1,48 +1,70 @@
 package com.example.meeteatsave;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.os.PersistableBundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle t;
+    private NavigationView nv;
 
-    private Button buttonRed, buttonYellow;
-    private TextView welcomeTextView;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        buttonRed = findViewById(R.id.buttonRed);
-        buttonYellow = findViewById(R.id.buttonYellow);
-        welcomeTextView = findViewById(R.id.textViewTitle);
 
-        buttonRed.setOnClickListener(this);
-        buttonYellow.setOnClickListener(this);
+        dl = findViewById(R.id.drawer);
+        t = new ActionBarDrawerToggle(this, dl, R.string.open, R.string.close);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        dl.addDrawerListener(t);
+        t.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        nv = findViewById(R.id.nv);
+        nv.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            switch (id) {
+                case R.id.account:
+                    Toast.makeText(MainActivity.this, "My Account", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.search:
+                    startActivity(new Intent(this, SearchActivity.class));
+                    break;
+                case R.id.makeOffer:
+                    Toast.makeText(MainActivity.this, "Make Offer", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    return true;
+            }
+
+
+            return true;
+
+        });
+
     }
 
+
     @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.buttonRed) {
-            firebaseAuth.signOut();
-            startActivity(new Intent(this, LoginActivity.class));
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        }
-        if (v.getId() == R.id.buttonYellow) {
-            welcomeTextView.setTextColor(getColor(R.color.colorYellow));
-            Toast.makeText(this, " the text is now Yellow", Toast.LENGTH_LONG).show();
-        }
+        if (t.onOptionsItemSelected(item))
+            return true;
 
+
+        return super.onOptionsItemSelected(item);
     }
 }
