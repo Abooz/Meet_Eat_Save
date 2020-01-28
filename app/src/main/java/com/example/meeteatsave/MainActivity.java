@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(this, SearchActivity.class));
                     break;
                 case R.id.makeOffer:
-                    Toast.makeText(MainActivity.this, "Make Offer", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, AdActivity.class) );
                     break;
                 default:
                     return true;
