@@ -42,8 +42,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     private EditText timeET;
     private EditText seatsET;
     private Button addButton;
-    private View v ;
-
 
     DatabaseReference databaseAds;
 
@@ -51,7 +49,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ad);
-
 
         databaseAds = FirebaseDatabase.getInstance().getReference("Database");
         titleET = findViewById(R.id.editTextTitle);
@@ -92,7 +89,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                 datePickerDialog.show();
             }
         });
-
 
         titleET.addTextChangedListener(this);
         seatsET.addTextChangedListener(this);
@@ -145,19 +141,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
-    private void addAd() {
-
-        String title = cityET.getText().toString().trim();
-
-
-        if (!TextUtils.isEmpty(title)) {
-            String id = databaseAds.push().getKey();
-            Toast.makeText(this, "Ad added", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(this, "you should add a title", Toast.LENGTH_LONG).show();
-        }
-    }
-
     private void writeNewPost(String uid, String title, String foodArt, String city, double price, int numberOfSeats, String date, String time) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
@@ -178,7 +161,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                     finish();
                 });
     }
-
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
