@@ -15,8 +15,8 @@ public class Ads {
     public String city;
     public double price;
     public int numberOfSeats;
-    public Date date;
-    public Time time;
+    public String date;
+    public String time;
     public int starCount = 0;
     public Map<String, Boolean> stars = new HashMap<>();
 
@@ -24,7 +24,7 @@ public class Ads {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Ads(String uid, String title, String foodArt, String city, double price, int numberOfSeats, Date date, Time time) {
+    public Ads(String uid, String title, String foodArt, String city, double price, int numberOfSeats, String date, String time) {
         this.uid = uid;
         this.title = title;
         this.foodArt = foodArt;

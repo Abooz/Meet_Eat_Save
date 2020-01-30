@@ -3,15 +3,20 @@ package com.example.meeteatsave;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,12 +24,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Time;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class AdActivity extends AppCompatActivity {
+public class AdActivity extends AppCompatActivity implements TextWatcher {
 
     private EditText cityET;
     private EditText titleET;
@@ -100,7 +107,6 @@ public class AdActivity extends AppCompatActivity {
 
                         } else {
                             // Write new post
-                            writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString());
 
                         }
 
@@ -116,7 +122,7 @@ public class AdActivity extends AppCompatActivity {
                 });
         // [END single_value_read]
 
-        addButton.setOnClickListener(v -> writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString()));
+        addButton.setOnClickListener(v -> writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()),Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString() ));
 
 
     }
@@ -139,19 +145,40 @@ public class AdActivity extends AppCompatActivity {
         }
     }
 
-    private void writeNewPost(String userId, String title, String body) {
+    private void writeNewPost(String uid, String title, String foodArt, String city, double price, int numberOfSeats, String date, String time) {
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = databaseAds.child("Database").push().getKey();
-        Ads ads = new Ads(userId, title, body);
+        Ads ads = new Ads(uid, title, foodArt, city, price, numberOfSeats, date, time);
         Map<String, Object> postValues = ads.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Ads/" + key, postValues);
-        childUpdates.put("/user-ads/" + userId + "/" + key, postValues);
+        childUpdates.put("/user-ads/" + uid + "/" + key, postValues);
 
-        databaseAds.updateChildren(childUpdates);
+        databaseAds.updateChildren(childUpdates).addOnSuccessListener(aVoid -> {
+            Toast.makeText(AdActivity.this, "Your ad has been successfully published", Toast.LENGTH_SHORT).show();
+            finish();
+        })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(AdActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
     }
 
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
 }
