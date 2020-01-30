@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -41,6 +42,7 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     private EditText timeET;
     private EditText seatsET;
     private Button addButton;
+    private View v ;
 
 
     DatabaseReference databaseAds;
@@ -92,6 +94,14 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
         });
 
 
+        titleET.addTextChangedListener(this);
+        seatsET.addTextChangedListener(this);
+        cityET.addTextChangedListener(this);
+        timeET.addTextChangedListener(this);
+        priceET.addTextChangedListener(this);
+        FoodET.addTextChangedListener(this);
+        dateET.addTextChangedListener(this);
+
         final String userId = getUid();
         databaseAds.child("users").child(userId).addListenerForSingleValueEvent(
                 new ValueEventListener() {
@@ -122,11 +132,14 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                 });
         // [END single_value_read]
 
-        addButton.setOnClickListener(v -> writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()),Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString() ));
+        addButton.setOnClickListener((View v) -> {
 
+                writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()), Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString());
+        });
+
+        addButton.setEnabled(false);
 
     }
-
 
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -180,5 +193,33 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
-    }
+                if (cityET.getText().toString().length()< 3){
+                    cityET.setError("Please fill this field");
+                }else{
+                    addButton.setEnabled(true);
+                }
+                if (FoodET.getText().toString().length()< 4){
+                    FoodET.setError("Please fill this field");
+                }else{
+                    addButton.setEnabled(true);
+                }
+
+                if (priceET.getText().toString().length()< 1){
+                    priceET.setError("Please fill this field");
+                }else{
+                    addButton.setEnabled(true);
+                }
+                if (titleET.getText().toString().length()< 4){
+                    titleET.setError("Please fill this field");
+                }else{
+                    addButton.setEnabled(true);
+                }
+                if (seatsET.getText().toString().length()< 1){
+                    seatsET.setError("Please fill this field");
+                }else{
+                    addButton.setEnabled(true);
+                }
+        }
+
+
 }
