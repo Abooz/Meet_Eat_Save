@@ -2,51 +2,84 @@ package com.example.meeteatsave;
 
 public class User {
 
-    private String userId;
-    private String userName;
-    private String userMail;
-    private String surname;
+    private String uId;
+    private String userFirstName;
+    private String userLastName;
+    private int age;
+    private int telephoneNumber;
+    private String streetAndHouseNumber;
+    private int houseNumber;
+    private int plz;
+    private String city;
+    private String sex;
 
     public User() {
     }
 
-    public User(String userId, String userName, String userMail, String surname ) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userMail = userMail;
-        this.surname = surname;
+    public User(String userId, String userFirstName, String userLastName, int age, int telephoneNumber, String streetAndHouseNumber, int houseNumber, int plz, String city, String sex  ) {
+        this.uId = userId;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.age = age;
+        this.telephoneNumber = telephoneNumber;
+        this.streetAndHouseNumber = streetAndHouseNumber;
+        this.houseNumber = houseNumber;
+        this.plz = plz;
+        this.sex = sex;
+
+
 
     }
 
-    public String getUserId() {
-        return userId;
+    public String getuId() {
+        return uId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getUserFirstName() {
+        return userFirstName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserLastName() {
+        return userLastName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public int getAge() {
+        return age;
     }
 
-    public String getUserMail() {
-        return userMail;
+
+
+    public int getTelephoneNumber() {
+        return telephoneNumber;
     }
 
-    public void setUserMail(String userMail) {
-        this.userMail = userMail;
+
+
+    public String getStreetAndHouseNumber() {
+        return streetAndHouseNumber;
     }
 
-    public String getSurname() {
-        return surname;
+
+
+    public int getHouseNumber() {
+        return houseNumber;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+
+
+    public int getPlz() {
+        return plz;
+    }
+
+
+
+    public String getCity() {
+        return city;
+    }
+
+
+
+    public String getSex() {
+        return sex;
     }
 }

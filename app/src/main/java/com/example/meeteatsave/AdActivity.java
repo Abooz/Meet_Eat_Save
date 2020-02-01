@@ -128,10 +128,7 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                 });
         // [END single_value_read]
 
-        addButton.setOnClickListener((View v) -> {
-
-                writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()), Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString());
-        });
+        addButton.setOnClickListener((View v) -> writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()), Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString()));
 
         addButton.setEnabled(false);
 

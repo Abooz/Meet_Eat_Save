@@ -73,11 +73,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Price"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextCity"
+        android:digits="0123456789,.€"
+
         />
 
 
@@ -86,11 +88,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Number of Seats"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextPrice"
+        android:digits="0123456789"
         />
 
     <LinearLayout
@@ -129,7 +132,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/userButton"
         android:layout_below="@+id/dateTimePickers"
         android:layout_width="match_parent"
         android:layout_height="56dp"

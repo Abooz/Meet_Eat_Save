@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(this, LoginActivity.class) );
                     break;
                 case R.id.profile:
-                    Toast.makeText(MainActivity.this, "My Account", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, UserActivity.class));
                     break;
                 default:
                     return true;
