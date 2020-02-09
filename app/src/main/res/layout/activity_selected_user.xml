@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectedUserActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="?attr/actionBarSize">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Selected Title"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            />
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/selectedUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected User:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected city:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/selectedFood"
+        android:layout_marginTop="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected Food:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/selectedTitle"
+        android:layout_marginTop="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected Date:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
+
+        android:layout_below="@+id/selectedTime"
+        />
+
+    <TextView
+        android:id="@+id/selectedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected Time:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/selectedSeats"
+        android:layout_marginTop="5dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected User:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
+
+        android:layout_below="@+id/toolbar"
+        />
+
+    <TextView
+        android:id="@+id/selectedPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected User:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/selectedCity"
+        android:layout_marginTop="5dp"
+
+        />
+    <TextView
+        android:id="@+id/selectedSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected User:"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/selectedPrice"
+        android:layout_marginTop="5dp"
+
+        />
+
+
+
+</RelativeLayout>

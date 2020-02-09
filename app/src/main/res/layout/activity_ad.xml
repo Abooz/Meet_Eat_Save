@@ -55,7 +55,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/editTextCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

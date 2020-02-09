@@ -7,6 +7,19 @@
     <string name="close">close</string>
 
 
+    <string-array name="list_of_countries">
+        <item>Berlin</item>
+        <item>Hamburg</item>
+        <item>München</item>
+        <item>Köln</item>
+        <item>Frankfurt</item>
+        <item>Essen</item>
+        <item>Stuttgart</item>
+        <item>Düsseldorf</item>
+        <item>Bremen</item>
+        <item>Dortmund</item>
+    </string-array>
+
     <string-array name="Cities">
         <item>München</item>
         <item>Freising</item>

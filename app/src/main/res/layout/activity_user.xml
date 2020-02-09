@@ -27,20 +27,6 @@
             android:layout_below="@+id/toolbar"
             />
 
-
-        <EditText
-            android:id="@+id/editTextUserFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="First name"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/userImageView"
-            android:visibility="gone"
-
-            />
         <TextView
             android:id="@+id/textViewFirstName"
             android:layout_width="match_parent"
@@ -50,44 +36,21 @@
             android:layout_marginRight="16dp"
             android:layout_below="@+id/userImageView"
             android:text="First Name"
-            />
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+           />
 
-        <EditText
-            android:id="@+id/editTextLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Last name"
-            android:layout_below="@+id/editTextUserFirstName"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:visibility="gone"
-
-            />
         <TextView
             android:id="@+id/textViewLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/textViewFirstName"
             android:text="Last Name"
-            />
-
-
-        <EditText
-            android:id="@+id/editTextAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="textPersonName"
-            android:hint="Age"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/editTextLastName"
-            android:visibility="gone"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
 
             />
 
@@ -95,67 +58,55 @@
             android:id="@+id/textViewAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/textViewLastName"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
             android:text="Age"
             />
 
-
-
-        <EditText
-            android:id="@+id/editTextTelephoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="number"
-            android:hint="Telephone number"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/editTextAge"
-            android:digits="0123456789"
-            android:visibility="gone"
-
-
-            />
 
         <TextView
             android:id="@+id/textViewTelephoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/textViewAge"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
             android:text="Telephone Number"
-            />
-
-
-
-        <EditText
-            android:id="@+id/editTextStreetAndHouseNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="textPersonName"
-            android:hint="Street and house number"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_below="@+id/editTextTelephoneNumber"
-            android:visibility="gone"
 
             />
+
 
         <TextView
             android:id="@+id/textViewStreetAndHouseNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/textViewTelephoneNumber"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
             android:text="Street and house number"
+            />
+
+        <TextView
+            android:id="@+id/genderTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewStreetAndHouseNumber"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="Gender"
             />
 
 
@@ -164,87 +115,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/textViewStreetAndHouseNumber"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/genderTV"
             android:gravity="center"
             >
 
-
-            <EditText
-                android:id="@+id/editTextPlz"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:inputType="number"
-                android:hint="PLZ"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/editTextStreetAndHouseNumber"
-                android:digits="0123456789"
-                android:visibility="gone"
-
-
-                />
             <TextView
                 android:id="@+id/textViewPlz"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_below="@+id/textViewStreetAndHouseNumber"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
                 android:text="PLZ"
+                android:gravity="center"
                 />
 
-
-
-            <EditText
-                android:id="@+id/editTextCity"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:inputType="textPersonName"
-                android:hint="City"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/editTextPlz"
-                android:visibility="gone"
-
-                />
             <TextView
                 android:id="@+id/textViewCity"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_below="@+id/textViewPlz"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
                 android:text="City"
+                android:gravity="center"
                 />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/addButton"
-            android:layout_below="@+id/PlzAndCity"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/reound_background"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="5dp"
-            android:layout_gravity="bottom"
-            android:visibility="invisible"
-
-            />
-
-
 
 
     </RelativeLayout>
