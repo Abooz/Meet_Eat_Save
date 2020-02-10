@@ -2,27 +2,27 @@ package com.example.meeteatsave;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Ads {
+public class Ads implements Serializable {
 
     public String uid;
     public String title;
     public String foodArt;
     public String city;
-    public double price;
-    public int numberOfSeats;
+    public String price;
+    public String numberOfSeats;
     public String date;
     public String time;
     public int starCount = 0;
-    public Map<String, Boolean> stars = new HashMap<>();
 
     public Ads() {
         // Default constructor required for calls to DataSnapshot.getValue(Ads.class)
     }
 
-    public Ads(String uid, String title, String foodArt, String city, double price, int numberOfSeats, String date, String time) {
+    public Ads(String uid, String title, String foodArt, String city, String  price, String numberOfSeats, String date, String time) {
         this.uid = uid;
         this.title = title;
         this.foodArt = foodArt;
@@ -81,21 +81,6 @@ public class Ads {
         this.city = city;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
 
     public String getDate() {
         return date;
@@ -121,11 +106,20 @@ public class Ads {
         this.starCount = starCount;
     }
 
-    public Map<String, Boolean> getStars() {
-        return stars;
+
+    public String getPrice() {
+        return price;
     }
 
-    public void setStars(Map<String, Boolean> stars) {
-        this.stars = stars;
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(String numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 }

@@ -1,9 +1,9 @@
 package com.example.meeteatsave;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.method.DigitsKeyListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,12 +23,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class UserActivity extends AppCompatActivity {
 
-    private TextView fnTV;
-    private TextView lnTV;
+    private TextView firstNameTV;
+    private TextView lastNameTV;
     private TextView ageTV;
     private TextView telephoneNumberTV;
     private TextView streetAndHouseNumberTV;
@@ -37,15 +35,15 @@ public class UserActivity extends AppCompatActivity {
     private TextView genderTV;
     private DatabaseReference mDatabase;
     private final String userId = getUid();
-
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        fnTV = findViewById(R.id.textViewFirstName);
-        lnTV = findViewById(R.id.textViewLastName);
+        firstNameTV = findViewById(R.id.textViewFirstName);
+        lastNameTV = findViewById(R.id.textViewLastName);
         ageTV = findViewById(R.id.textViewAge);
         genderTV = findViewById(R.id.genderTV);
         telephoneNumberTV = findViewById(R.id.textViewTelephoneNumber);
@@ -53,14 +51,13 @@ public class UserActivity extends AppCompatActivity {
         plzTV = findViewById(R.id.textViewPlz);
         cityTV = findViewById(R.id.textViewCity);
 
-
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setOnClickListener(v -> startActivity(new Intent(UserActivity.this, MainActivity.class)));
 
         setClickable();
 
         onClickListeners();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Database/Users/");
-        mDatabase.child("users").child(userId).child("uId").setValue(userId).addOnFailureListener(e -> Log.d("log", Objects.requireNonNull(e.getLocalizedMessage())));
         mDatabase = FirebaseDatabase.getInstance().getReference("Database/Users/");
 
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -68,24 +65,28 @@ public class UserActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     User user = dataSnapshot1.getValue(User.class);
-                    String usrtr=user.getuId();
-                    String aaa = user.getUserFirstName();
-                    if (user.getuId().equals(userId)){
-                        fnTV.setText(user.getUserFirstName());
-                        lnTV.setText(user.getUserLastName());
-                        ageTV.setText(user.getAge());
-                        telephoneNumberTV.setText(user.getTelephoneNumber());
-                        streetAndHouseNumberTV.setText(user.getStreetAndHouseNumber());
-                        plzTV.setText(user.getPlz());
-                        genderTV.setText(user.getSex());
-                        cityTV.setText(user.getCity());
+                    if (user.getUid().equals(userId)) {
+                        if (user.getSex().equals("") || user.getPlz().equals("") || user.getAge().equals("") || user.getTelephoneNumber().equals("")
+                                || user.getStreetAndHouseNumber().equals("") || user.getCity().equals("") || user.getUserLastName().equals("")
+                                || user.getUserFirstName().equals("") ){
+                        }else{
+                            firstNameTV.setText(user.getUserFirstName());
+                            lastNameTV.setText(user.getUserLastName());
+                            ageTV.setText(user.getAge());
+                            telephoneNumberTV.setText(user.getTelephoneNumber());
+                            streetAndHouseNumberTV.setText(user.getStreetAndHouseNumber());
+                            plzTV.setText(user.getPlz());
+                            genderTV.setText(user.getSex());
+                            cityTV.setText(user.getCity());
+                        }
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-               Toast.makeText(UserActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
-               finish();
+                Toast.makeText(UserActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
@@ -120,7 +121,7 @@ public class UserActivity extends AppCompatActivity {
             if (getText.equals("")) {
                 editText.setError("This Field cant be Empty");
             } else {
-                mDatabase.child("users").child(userId).child(child).setValue(getText);
+                mDatabase.child(userId).child(child).setValue(getText);
                 tv.setText(getText);
                 dialogBuilder.dismiss();
             }
@@ -131,10 +132,10 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void setClickable() {
-        fnTV.setClickable(true);
+        firstNameTV.setClickable(true);
         ageTV.setClickable(true);
         cityTV.setClickable(true);
-        lnTV.setClickable(true);
+        lastNameTV.setClickable(true);
         plzTV.setClickable(true);
         genderTV.setClickable(true);
         streetAndHouseNumberTV.setClickable(true);
@@ -142,8 +143,8 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void onClickListeners() {
-        fnTV.setOnClickListener(v -> {
-            dialogView("First Name", "Please Enter your First Name", "userFirstName", fnTV);
+        firstNameTV.setOnClickListener(v -> {
+            dialogView("First Name", "Please Enter your First Name", "userFirstName", firstNameTV);
         });
         ageTV.setOnClickListener(v -> {
             dialogView("Age", "How Old are you?", "age", ageTV);
@@ -151,8 +152,8 @@ public class UserActivity extends AppCompatActivity {
         cityTV.setOnClickListener(v -> {
             dialogView("City", "Please Enter your City", "city", cityTV);
         });
-        lnTV.setOnClickListener(v -> {
-            dialogView("Last Name", "Please Enter your Last Name", "userLastName", lnTV);
+        lastNameTV.setOnClickListener(v -> {
+            dialogView("Last Name", "Please Enter your Last Name", "userLastName", lastNameTV);
         });
         plzTV.setOnClickListener(v -> {
             dialogView("PLZ", "Please Enter your PLZ", "plz", plzTV);

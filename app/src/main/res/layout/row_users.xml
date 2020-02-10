@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"
-                android:text="T"
+                android:text="@string/t"
                 android:layout_centerInParent="true"
                 android:layout_height="wrap_content"/>
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
-            android:text="username"
+            android:text="@string/username"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:layout_marginTop="5dp"/>
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/username"
             android:layout_marginStart="90dp"
-            android:text="city"
+            android:text="@string/city3"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 

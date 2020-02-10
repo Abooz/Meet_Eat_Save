@@ -7,13 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="700dp"
+    android:background="@android:color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        app:navigationIcon="?attr/homeAsUpIndicator"/>
 
 
     <TextView
@@ -24,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="124dp"
         android:fontFamily="@font/audiowide"
-        android:text="Please Fill the Information of your Ad"
+        android:text="@string/please_fill_the_information_of_your_ad"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginLeft="16dp"
@@ -37,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Title"
+        android:hint="@string/title"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -49,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Food Art"
+        android:hint="@string/food_art"
         android:layout_below="@+id/editTextTitle"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
@@ -61,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
-        android:hint="City"
+        android:hint="@string/city"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextFood"
@@ -74,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="number"
-        android:hint="Price"
+        android:hint="@string/price"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextCity"
@@ -89,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="number"
-        android:hint="Number of Seats"
+        android:hint="@string/number_of_seats"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextPrice"
@@ -111,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
-        android:hint="Date"
+        android:hint="@string/date"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextSeats"
@@ -124,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
-        android:hint="Time"
+        android:hint="@string/time"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_below="@+id/editTextFood"
@@ -139,7 +141,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/reound_background"
-        android:text="Button"
+        android:text="@string/finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginLeft="16dp"

@@ -2,6 +2,7 @@ package com.example.meeteatsave;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAdapter.SelectedUser {
     private DrawerLayout drawerLayout;
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAd
     private AdsRecyclerViewAdapter adsRecyclerViewAdapter;
     private DatabaseReference mDatabase;
     private ArrayList<Ads> adsArrayList = new ArrayList<>();
+    private FloatingActionButton newAdd;
+    private final String userId = getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAd
 
         recyclerView = findViewById(R.id.recyclerview);
         toolbar = findViewById(R.id.toolbar);
+        newAdd = findViewById(R.id.newAdd);
+
+        newAdd.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AdActivity.class)));
 
         this.setSupportActionBar(toolbar);
         this.getSupportActionBar().setTitle("");
@@ -124,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAd
 
     }
 
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
+
     public void searchViewContent(){
         mDatabase = FirebaseDatabase.getInstance().getReference("Database/Ads/");
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -151,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAd
 
     @Override
     public void selectedUser(Ads ads) {
-        startActivity(new Intent(MainActivity.this, SelectedUserActivity.class).putExtra("data", adsArrayList));
+        startActivity(SelectedAdActivity.createIntent(this, ads));
     }
 
     @Override
@@ -197,6 +209,10 @@ public class MainActivity extends AppCompatActivity implements AdsRecyclerViewAd
         } else if (actionBarDrawerToggle.onOptionsItemSelected(item))
             return true;
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 
 }

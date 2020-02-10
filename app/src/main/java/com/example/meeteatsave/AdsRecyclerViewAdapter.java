@@ -123,5 +123,7 @@ public class AdsRecyclerViewAdapter extends RecyclerView.Adapter<AdsRecyclerView
 
 
         }
+
     }
+
 }

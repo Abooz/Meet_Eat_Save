@@ -8,13 +8,15 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"/>
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -35,7 +37,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/userImageView"
-            android:text="First Name"
+            android:text="@string/first_name"
             android:textColor="@android:color/black"
             android:textSize="18dp"
            />
@@ -48,7 +50,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_below="@+id/textViewFirstName"
-            android:text="Last Name"
+            android:text="@string/last_name"
             android:textColor="@android:color/black"
             android:textSize="18dp"
 
@@ -64,7 +66,7 @@
             android:layout_below="@+id/textViewLastName"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:text="Age"
+            android:text="@string/age"
             />
 
 
@@ -78,7 +80,7 @@
             android:layout_below="@+id/textViewAge"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:text="Telephone Number"
+            android:text="@string/telephone_number"
 
             />
 
@@ -93,7 +95,7 @@
             android:layout_below="@+id/textViewTelephoneNumber"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:text="Street and house number"
+            android:text="@string/street_and_house_number"
             />
 
         <TextView
@@ -106,7 +108,7 @@
             android:layout_below="@+id/textViewStreetAndHouseNumber"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:text="Gender"
+            android:text="@string/gender"
             />
 
 
@@ -129,7 +131,7 @@
                 android:layout_below="@+id/textViewStreetAndHouseNumber"
                 android:textColor="@android:color/black"
                 android:textSize="18dp"
-                android:text="PLZ"
+                android:text="@string/plz"
                 android:gravity="center"
                 />
 
@@ -142,7 +144,7 @@
                 android:layout_below="@+id/textViewPlz"
                 android:textColor="@android:color/black"
                 android:textSize="18dp"
-                android:text="City"
+                android:text="@string/city"
                 android:gravity="center"
                 />
 

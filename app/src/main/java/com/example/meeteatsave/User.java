@@ -1,8 +1,13 @@
 package com.example.meeteatsave;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
 
-    private String uId;
+    private String uid;
     private String userFirstName;
     private String userLastName;
     private String age;
@@ -15,8 +20,8 @@ public class User {
     public User() {
     }
 
-    public User(String userId, String userFirstName, String userLastName, String age, String telephoneNumber, String streetAndHouseNumber, String plz, String city, String sex) {
-        this.uId = userId;
+    public User(String uid, String userFirstName, String userLastName, String age, String telephoneNumber, String streetAndHouseNumber, String plz, String city, String sex) {
+        this.uid = uid;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.age = age;
@@ -27,12 +32,28 @@ public class User {
         this.city = city;
     }
 
-    public String getuId() {
-        return uId;
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uid", uid);
+        result.put("userFirstName", userFirstName);
+        result.put("userLastName", userLastName);
+        result.put("age", age);
+        result.put("city", city);
+        result.put("telephoneNumber", telephoneNumber);
+        result.put("streetAndHouseNumber", streetAndHouseNumber);
+        result.put("plz", plz);
+        result.put("sex", sex);
+
+        return result;
     }
 
-    public void setuId(String uId) {
-        this.uId = uId;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getUserFirstName() {

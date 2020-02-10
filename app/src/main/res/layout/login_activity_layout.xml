@@ -8,8 +8,8 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="100dp">
+    android:layout_height="match_parent"
+    android:layout_marginTop="150dp">
 
 
     <include
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="E-mail"
+                android:hint="@string/e_mail"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -85,7 +85,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/reound_background"
-                android:text="Login"
+                android:text="@string/login"
                 android:textAllCaps="true"
                 android:textColor="#000" />
 
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@null"
-            android:text="Forgot my Password"
+            android:text="@string/forgot_my_password"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimary" />
 

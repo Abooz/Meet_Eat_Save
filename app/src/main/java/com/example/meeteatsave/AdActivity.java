@@ -2,6 +2,7 @@ package com.example.meeteatsave;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +40,7 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     private EditText seatsET;
     private Button addButton;
     private DatabaseReference databaseAds;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
         timeET = findViewById(R.id.editTextTime);
         seatsET = findViewById(R.id.editTextSeats);
         cityET = findViewById(R.id.editTextCity);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setOnClickListener(v -> startActivity(new Intent(AdActivity.this, MainActivity.class)));
 
         AutoCompleteTextView autoCompleteTextView1 = findViewById(R.id.editTextCity);
         String[] countries = getResources().getStringArray(R.array.list_of_countries);
@@ -67,7 +72,9 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
                 int minute = calendar.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-                mTimePicker = new TimePickerDialog(AdActivity.this, (TimePicker timePicker, int selectedHour, int selectedMinute) -> { timeET.setText(selectedHour + ":" + selectedMinute); }, hour, minute, true);//Yes 24 hour time
+                mTimePicker = new TimePickerDialog(AdActivity.this, (TimePicker timePicker, int selectedHour, int selectedMinute) -> {
+                    timeET.setText(selectedHour + ":" + selectedMinute);
+                }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select the Time");
                 mTimePicker.show();
             }
@@ -84,8 +91,6 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                 datePickerDialog.show();
             }
         });
-
-
 
         titleET.addTextChangedListener(this);
         seatsET.addTextChangedListener(this);
@@ -111,7 +116,30 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
                     }
                 });
 
-        addButton.setOnClickListener((View v) -> writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), Double.parseDouble(priceET.getText().toString()), Integer.parseInt(seatsET.getText().toString()), dateET.getText().toString(), timeET.getText().toString()));
+        addButton.setOnClickListener(v -> {
+            if (FoodET.getText().toString().length() <= 1) {
+                FoodET.setError("Please fill this field");
+            }
+
+            if (priceET.getText().toString().length() <= 1) {
+                priceET.setError("Please fill this field");
+            }
+            if (dateET.getText().toString().length() <= 1) {
+                dateET.setError("Please fill this field");
+            }
+            if (timeET.getText().toString().length() <= 1) {
+                timeET.setError("Please fill this field");
+            }
+            if (cityET.getText().toString().length() <= 1) {
+                titleET.setError("Please fill this field");
+                cityET.setError("Please fill this field");
+            }
+            if (seatsET.getText().toString().length() <= 1) {
+                seatsET.setError("Please fill this field");
+            } else {
+                AdActivity.this.writeNewPost(userId, titleET.getText().toString(), FoodET.getText().toString(), cityET.getText().toString(), priceET.getText().toString(), seatsET.getText().toString(), dateET.getText().toString(), timeET.getText().toString());
+            }
+        });
 
         addButton.setEnabled(false);
 
@@ -121,14 +149,14 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
-    private void writeNewPost(String uid, String title, String foodArt, String city, double price, int numberOfSeats, String date, String time) {
+    private void writeNewPost(String uid, String title, String foodArt, String city, String price, String numberOfSeats, String date, String time) {
         String key = databaseAds.child("Database").push().getKey();
         Ads ads = new Ads(uid, title, foodArt, city, price, numberOfSeats, date, time);
         Map<String, Object> postValues = ads.toMap();
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/Ads/" + key, postValues);
-        childUpdates.put("/users/" + uid + "/" ,uid);
+        childUpdates.put("/users/" + uid + "/", uid);
 
         databaseAds.updateChildren(childUpdates).addOnSuccessListener(aVoid -> {
             Toast.makeText(AdActivity.this, "Your ad has been successfully published", Toast.LENGTH_SHORT).show();
@@ -153,33 +181,16 @@ public class AdActivity extends AppCompatActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
-        if (cityET.getText().toString().isEmpty()) {
-            cityET.setError("Please fill this field");
-        } else {
-            addButton.setEnabled(true);
-        }
-        if (FoodET.getText().toString().isEmpty()) {
-            FoodET.setError("Please fill this field");
-        } else {
-            addButton.setEnabled(true);
-        }
-
-        if (priceET.getText().toString().isEmpty()) {
-            priceET.setError("Please fill this field");
-        } else {
-            addButton.setEnabled(true);
-        }
-        if (titleET.getText().toString().isEmpty()) {
-            titleET.setError("Please fill this field");
-        } else {
-            addButton.setEnabled(true);
-        }
-        if (seatsET.getText().toString().isEmpty()) {
-            seatsET.setError("Please fill this field");
+        if (titleET.getText().toString().length() <= 1) {
+            addButton.setEnabled(false);
         } else {
             addButton.setEnabled(true);
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(AdActivity.this, MainActivity.class));
+    }
 
 }
