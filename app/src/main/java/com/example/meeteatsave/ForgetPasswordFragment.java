@@ -41,7 +41,7 @@ public class ForgetPasswordFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.backToLoginBT) {
-        //    ForgetPasswordFragment.this.startActivity(new Intent(ForgetPasswordFragment.this.getContext(), LoginActivity.class));
+            ForgetPasswordFragment.this.startActivity(new Intent(ForgetPasswordFragment.this.getContext(), LoginActivity.class));
 
         } else if (v.getId() == R.id.sendButton) {
             FirebaseAuth.getInstance().sendPasswordResetEmail(emailET.getText().toString())

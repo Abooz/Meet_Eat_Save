@@ -6,12 +6,18 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -20,6 +26,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseAds;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.uyeParola);
         registerButton = findViewById(R.id.registerButton);
         loginButton = findViewById(R.id.backToLoginViewButton);
+
+        databaseAds = FirebaseDatabase.getInstance().getReference("Database");
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -52,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
             firebaseAuth.createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful()){
+                            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            writeNewPost(userId,"","","","","","","","");
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             finish();
                         }
@@ -66,5 +78,22 @@ public class RegisterActivity extends AppCompatActivity {
         if(firebaseAuth.getCurrentUser()!=null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
+    }
+
+
+    private void writeNewPost(String uid, String title, String foodArt, String city, String price, String numberOfSeats, String date, String time, String firstname) {
+        User user = new User(uid, title, foodArt, city, price, numberOfSeats, date, time, firstname);
+        Map<String, Object> postValues = user.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/Users/" + uid, postValues);
+
+        databaseAds.updateChildren(childUpdates).addOnSuccessListener(aVoid -> {
+            finish();
+        })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(RegisterActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
     }
 }

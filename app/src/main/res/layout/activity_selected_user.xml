@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectedAdActivity"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
+        <TextView
+            android:id="@+id/titleToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:text="Selected Title" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/selectedCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedFood"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/city2"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedCityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedFood"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedCity"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="City"
+
+        />
+
+
+    <TextView
+        android:id="@+id/selectedFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedTitle"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/food"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedFoodView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedTitle"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedFood"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="Food"
+
+
+        />
+
+    <TextView
+        android:id="@+id/selectedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedTime"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/date2"
+        android:textColor="@android:color/black"
+
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/selectedDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedTime"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedDate"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        tools:text="Date" />
+
+    <TextView
+        android:id="@+id/selectedTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedSeats"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/time2"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedTimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedSeats"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedTime"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="Time"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/title2"
+        android:textColor="@android:color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/selectedTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_toEndOf="@+id/selectedTitle"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="Title"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedCity"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/price2"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedPriceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedCity"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedPrice"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="Price"
+
+        />
+
+    <TextView
+        android:id="@+id/selectedSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedPrice"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/seats2"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/selectedSeatsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectedPrice"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/selectedSeats"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        tools:text="Seats"
+
+        />
+
+    <Button
+        android:id="@+id/reserve"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/reound_background"
+        android:text="@string/reserve_a_seat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"/>
+
+
+</RelativeLayout>

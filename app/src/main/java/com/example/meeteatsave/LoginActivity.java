@@ -1,9 +1,9 @@
 package com.example.meeteatsave;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +24,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -43,6 +46,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleApiClient mGoogleApiClient;
     private FrameLayout frameLayout;
     private Toast exitToast;
+    private DatabaseReference databaseAds;
+
 
 
     @Override
@@ -60,11 +65,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         frameLayout = findViewById(R.id.fragmentFrame);
         exitToast = Toast.makeText(getApplicationContext(), "Press back again to exit", Toast.LENGTH_SHORT);
 
+        databaseAds = FirebaseDatabase.getInstance().getReference("Database");
+
         registerButton.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        textView.setText("Login / Register");
+        textView.setText(getResources().getString(R.string.login_or_register));
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -137,10 +144,28 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
+    private void writeNewPost(String uid, String title, String foodArt, String city, String price, String numberOfSeats, String date, String time, String firstname) {
+        User user = new User(uid, title, foodArt, city, price, numberOfSeats, date, time, firstname);
+        Map<String, Object> postValues = user.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/Users/" + uid, postValues);
+
+        databaseAds.updateChildren(childUpdates).addOnSuccessListener(aVoid -> {
+            finish();
+        })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(LoginActivity.this, "Something went wrong, please try again later", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+    }
+
     private void authWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                writeNewPost(userId,"","","","","","","","");
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             } else {
@@ -151,16 +176,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
     }
 
     public void showProgressBar() {
-
     }
 
-
     public void hideProgressBar() {
-
     }
 
     @Override

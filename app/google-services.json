@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "71563462995",
+    "firebase_url": "https://meet-eat-save.firebaseio.com",
+    "project_id": "meet-eat-save",
+    "storage_bucket": "meet-eat-save.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71563462995:android:e0e721e71b5f563632b9a6",
+        "android_client_info": {
+          "package_name": "com.example.meeteatsave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71563462995-0qkglpq1hc78c0h71grl9tj6eh9oj6a0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meeteatsave",
+            "certificate_hash": "0f6404f6b09e0ddf3dfd710f206f48cd40e294e2"
+          }
+        },
+        {
+          "client_id": "71563462995-conj9p1gq3o6q8t14m9a08r6psj73fgs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meeteatsave",
+            "certificate_hash": "477649aae021a8e646a13c1e25cbb8f2c8091086"
+          }
+        },
+        {
+          "client_id": "71563462995-l8q8uanl6r2bk870nalglvs8f334g1dr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWXbGPoQniY-aICtBPXGwiisYvQxKbdL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71563462995-l8q8uanl6r2bk870nalglvs8f334g1dr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,10 +13,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
 
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
 
         new Handler().postDelayed(() -> startActivity(
-                new Intent(getApplicationContext(), MainActivity.class)), 3000);
+                new Intent(getApplicationContext(), LoginActivity.class)), 3000);
 
 
     }

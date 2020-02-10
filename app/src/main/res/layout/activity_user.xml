@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@android:color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/userImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_account_circle_black_24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/toolbar"
+            />
+
+        <TextView
+            android:id="@+id/textViewFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/userImageView"
+            android:text="@string/first_name"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+           />
+
+        <TextView
+            android:id="@+id/textViewLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewFirstName"
+            android:text="@string/last_name"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+
+            />
+
+        <TextView
+            android:id="@+id/textViewAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewLastName"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="@string/age"
+            />
+
+
+        <TextView
+            android:id="@+id/textViewTelephoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewAge"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="@string/telephone_number"
+
+            />
+
+
+        <TextView
+            android:id="@+id/textViewStreetAndHouseNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewTelephoneNumber"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="@string/street_and_house_number"
+            />
+
+        <TextView
+            android:id="@+id/genderTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_below="@+id/textViewStreetAndHouseNumber"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:text="@string/gender"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/PlzAndCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/genderTV"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/textViewPlz"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/textViewStreetAndHouseNumber"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:text="@string/plz"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_below="@+id/textViewPlz"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:text="@string/city"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
